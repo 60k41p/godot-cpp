@@ -2,10 +2,10 @@
 	"header": {
 		"version_major": 4,
 		"version_minor": 7,
-		"version_patch": 0,
-		"version_status": "stable",
-		"version_build": "official",
-		"version_full_name": "Godot Engine v4.7.stable.official",
+		"version_patch": 3,
+		"version_status": "rc",
+		"version_build": "custom_build",
+		"version_full_name": "Godot Engine v4.7.3.rc.custom_build",
 		"precision": "single"
 	},
 	"builtin_class_sizes": [
@@ -253536,6 +253536,43 @@
 						{
 							"name": "multimesh",
 							"type": "RID"
+						}
+					]
+				},
+				{
+					"name": "multimesh_set_extra_data_rd_rid",
+					"is_const": false,
+					"is_vararg": false,
+					"is_static": false,
+					"is_virtual": false,
+					"hash": 395945892,
+					"arguments": [
+						{
+							"name": "multimesh",
+							"type": "RID"
+						},
+						{
+							"name": "buffer",
+							"type": "RID"
+						}
+					]
+				},
+				{
+					"name": "multimesh_set_extra_data_stride",
+					"is_const": false,
+					"is_vararg": false,
+					"is_static": false,
+					"is_virtual": false,
+					"hash": 3411492887,
+					"arguments": [
+						{
+							"name": "multimesh",
+							"type": "RID"
+						},
+						{
+							"name": "stride",
+							"type": "int",
+							"meta": "uint32"
 						}
 					]
 				},
