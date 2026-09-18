@@ -238050,6 +238050,20 @@
 					"index": 9
 				},
 				{
+					"type": "PackedByteArray",
+					"name": "bytecode_mesh_task",
+					"setter": "set_stage_bytecode",
+					"getter": "get_stage_bytecode",
+					"index": 10
+				},
+				{
+					"type": "PackedByteArray",
+					"name": "bytecode_mesh",
+					"setter": "set_stage_bytecode",
+					"getter": "get_stage_bytecode",
+					"index": 11
+				},
+				{
 					"type": "String",
 					"name": "compile_error_vertex",
 					"setter": "set_stage_compile_error",
@@ -238118,6 +238132,20 @@
 					"setter": "set_stage_compile_error",
 					"getter": "get_stage_compile_error",
 					"index": 9
+				},
+				{
+					"type": "String",
+					"name": "compile_error_mesh_task",
+					"setter": "set_stage_compile_error",
+					"getter": "get_stage_compile_error",
+					"index": 10
+				},
+				{
+					"type": "String",
+					"name": "compile_error_mesh",
+					"setter": "set_stage_compile_error",
+					"getter": "get_stage_compile_error",
+					"index": 11
 				}
 			]
 		},
@@ -238259,6 +238287,20 @@
 					"setter": "set_stage_source",
 					"getter": "get_stage_source",
 					"index": 9
+				},
+				{
+					"type": "String",
+					"name": "source_mesh_task",
+					"setter": "set_stage_source",
+					"getter": "get_stage_source",
+					"index": 10
+				},
+				{
+					"type": "String",
+					"name": "source_mesh",
+					"setter": "set_stage_source",
+					"getter": "get_stage_source",
+					"index": 11
 				},
 				{
 					"type": "int",
@@ -245485,8 +245527,16 @@
 							"value": 9
 						},
 						{
-							"name": "SHADER_STAGE_MAX",
+							"name": "SHADER_STAGE_MESH_TASK",
 							"value": 10
+						},
+						{
+							"name": "SHADER_STAGE_MESH",
+							"value": 11
+						},
+						{
+							"name": "SHADER_STAGE_MAX",
+							"value": 12
 						},
 						{
 							"name": "SHADER_STAGE_VERTEX_BIT",
@@ -245527,6 +245577,14 @@
 						{
 							"name": "SHADER_STAGE_INTERSECTION_BIT",
 							"value": 512
+						},
+						{
+							"name": "SHADER_STAGE_MESH_TASK_BIT",
+							"value": 1024
+						},
+						{
+							"name": "SHADER_STAGE_MESH_BIT",
+							"value": 2048
 						}
 					]
 				},
@@ -245593,6 +245651,10 @@
 						{
 							"name": "SUPPORTS_HDR_OUTPUT",
 							"value": 13
+						},
+						{
+							"name": "SUPPORTS_MESH_SHADER",
+							"value": 14
 						}
 					]
 				},
@@ -245749,12 +245811,60 @@
 							"value": 36
 						},
 						{
+							"name": "LIMIT_SUBGROUP_SIZE",
+							"value": 37
+						},
+						{
+							"name": "LIMIT_SUBGROUP_MIN_SIZE",
+							"value": 38
+						},
+						{
+							"name": "LIMIT_SUBGROUP_MAX_SIZE",
+							"value": 39
+						},
+						{
+							"name": "LIMIT_SUBGROUP_IN_SHADERS",
+							"value": 40
+						},
+						{
+							"name": "LIMIT_SUBGROUP_OPERATIONS",
+							"value": 41
+						},
+						{
 							"name": "LIMIT_METALFX_TEMPORAL_SCALER_MIN_SCALE",
 							"value": 46
 						},
 						{
 							"name": "LIMIT_METALFX_TEMPORAL_SCALER_MAX_SCALE",
 							"value": 47
+						},
+						{
+							"name": "LIMIT_MAX_SHADER_VARYINGS",
+							"value": 48
+						},
+						{
+							"name": "LIMIT_MAX_MESH_TASK_WORKGROUP_COUNT_X",
+							"value": 49
+						},
+						{
+							"name": "LIMIT_MAX_MESH_TASK_WORKGROUP_COUNT_Y",
+							"value": 50
+						},
+						{
+							"name": "LIMIT_MAX_MESH_TASK_WORKGROUP_COUNT_Z",
+							"value": 51
+						},
+						{
+							"name": "LIMIT_MAX_MESH_WORKGROUP_COUNT_X",
+							"value": 52
+						},
+						{
+							"name": "LIMIT_MAX_MESH_WORKGROUP_COUNT_Y",
+							"value": 53
+						},
+						{
+							"name": "LIMIT_MAX_MESH_WORKGROUP_COUNT_Z",
+							"value": 54
 						}
 					]
 				},
@@ -248138,6 +248248,98 @@
 							"type": "int",
 							"meta": "uint32",
 							"default_value": "0"
+						}
+					]
+				},
+				{
+					"name": "draw_list_dispatch_mesh",
+					"is_const": false,
+					"is_vararg": false,
+					"is_static": false,
+					"is_virtual": false,
+					"hash": 4275841770,
+					"arguments": [
+						{
+							"name": "draw_list",
+							"type": "int",
+							"meta": "int64"
+						},
+						{
+							"name": "x_groups",
+							"type": "int",
+							"meta": "uint32"
+						},
+						{
+							"name": "y_groups",
+							"type": "int",
+							"meta": "uint32"
+						},
+						{
+							"name": "z_groups",
+							"type": "int",
+							"meta": "uint32"
+						}
+					]
+				},
+				{
+					"name": "draw_list_dispatch_mesh_indirect",
+					"is_const": false,
+					"is_vararg": false,
+					"is_static": false,
+					"is_virtual": false,
+					"hash": 749655778,
+					"arguments": [
+						{
+							"name": "draw_list",
+							"type": "int",
+							"meta": "int64"
+						},
+						{
+							"name": "buffer",
+							"type": "RID"
+						},
+						{
+							"name": "offset",
+							"type": "int",
+							"meta": "uint32"
+						}
+					]
+				},
+				{
+					"name": "draw_list_dispatch_mesh_indirect_count",
+					"is_const": false,
+					"is_vararg": false,
+					"is_static": false,
+					"is_virtual": false,
+					"hash": 3959577492,
+					"arguments": [
+						{
+							"name": "draw_list",
+							"type": "int",
+							"meta": "int64"
+						},
+						{
+							"name": "buffer",
+							"type": "RID"
+						},
+						{
+							"name": "offset",
+							"type": "int",
+							"meta": "uint32"
+						},
+						{
+							"name": "count_buffer",
+							"type": "RID"
+						},
+						{
+							"name": "count_buffer_offset",
+							"type": "int",
+							"meta": "uint32"
+						},
+						{
+							"name": "max_draw_count",
+							"type": "int",
+							"meta": "uint32"
 						}
 					]
 				},
